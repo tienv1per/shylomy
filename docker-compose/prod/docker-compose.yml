@@ -103,6 +103,19 @@ services:
       file: common-config.yml
       service: network-deploy-service
 
+  tempo:
+    image: grafana/tempo
+    container_name: tempo-shylomy
+    command: "-config.file /etc/tempo-config.yml"
+    ports:
+      - "3110:3100"
+      - "4317:4317"
+    volumes:
+      - ../observability/tempo/tempo.yml:/etc/tempo-config.yml
+    extends:
+      file: common-config.yml
+      service: network-deploy-service
+
   grafana:
     image: grafana/grafana:latest
     container_name: grafana-shylomy
@@ -229,6 +242,8 @@ services:
     extends:
       file: common-config.yml
       service: microservice-base-config
+    environment:
+      OTEL_SERVICE_NAME: "configserver"
 
   gatewayserver:
     image: "eazybytes/gatewayserver:s11"
@@ -246,6 +261,7 @@ services:
     #        condition: service_healthy
     environment:
       SPRING_APPLICATION_NAME: "gatewayserver"
+      OTEL_SERVICE_NAME: "gatewayserver"
     #      SPRING_DATA_REDIS_CONNECT-TIMEOUT: 2s
     #      SPRING_DATA_REDIS_HOST: redis
     #      SPRING_DATA_REDIS_PORT: 6379
@@ -273,6 +289,7 @@ services:
       service: microservice-configserver-config
     environment:
       SPRING_APPLICATION_NAME: "eurekaserver"
+      OTEL_SERVICE_NAME: "eurekaserver"
 
   accounts:
     image: "eazybytes/accounts:s11"
@@ -292,6 +309,7 @@ services:
       start_period: 30s
     environment:
       SPRING_APPLICATION_NAME: "accounts"
+      OTEL_SERVICE_NAME: "accounts"
     extends:
       file: common-config.yml
       service: microservice-eureka-config
@@ -314,6 +332,7 @@ services:
       start_period: 30s
     environment:
       SPRING_APPLICATION_NAME: "loans"
+      OTEL_SERVICE_NAME: "loans"
     extends:
       file: common-config.yml
       service: microservice-eureka-config
@@ -336,6 +355,7 @@ services:
       start_period: 30s
     environment:
       SPRING_APPLICATION_NAME: "cards"
+      OTEL_SERVICE_NAME: "cards"
     extends:
       file: common-config.yml
       service: microservice-eureka-config

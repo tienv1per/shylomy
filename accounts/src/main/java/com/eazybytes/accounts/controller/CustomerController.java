@@ -61,6 +61,7 @@ public class CustomerController {
                                                                    String mobileNumber) {
         logger.debug("eazyBank-correlation-id found: {} ", correlationId);
         CustomerDetailsDto customerDetailsDto = iCustomersService.fetchCustomerDetails(mobileNumber, correlationId);
+        logger.debug("fetch customer details end");
         return ResponseEntity.status(HttpStatus.SC_OK).body(customerDetailsDto);
 
     }
