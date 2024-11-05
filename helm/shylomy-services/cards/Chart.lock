@@ -1,0 +1,6 @@
+dependencies:
+- name: shylomy-common
+  repository: file://../../shylomy-common
+  version: 0.1.0
+digest: sha256:9d4121a508c885dcf92b527be4e28b1e4ae260c12d5fdd8ff0c06afdf1e83f6d
+generated: "2024-11-05T21:20:54.95004+07:00"
