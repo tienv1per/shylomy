@@ -1,0 +1,27 @@
+dependencies:
+- name: shylomy-common
+  repository: file://../../shylomy-common
+  version: 0.1.0
+- name: configserver
+  repository: file://../../shylomy-services/configserver
+  version: 0.1.0
+- name: eurekaserver
+  repository: file://../../shylomy-services/eurekaserver
+  version: 0.1.0
+- name: accounts
+  repository: file://../../shylomy-services/accounts
+  version: 0.1.0
+- name: cards
+  repository: file://../../shylomy-services/cards
+  version: 0.1.0
+- name: loans
+  repository: file://../../shylomy-services/loans
+  version: 0.1.0
+- name: gatewayserver
+  repository: file://../../shylomy-services/gatewayserver
+  version: 0.1.0
+- name: message
+  repository: file://../../shylomy-services/message
+  version: 0.1.0
+digest: sha256:39fe2440c6909b7f35067c7f326ae7d5f06fdc24c74d6a25ecffcf074aaa0375
+generated: "2024-11-05T22:33:43.013802+07:00"
